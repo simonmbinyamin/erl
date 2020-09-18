@@ -1,5 +1,5 @@
 -module(routy).
--export([start/2, stop/1, init/1]).
+-export([start/2, stop/1, init/1, status/1]).
  
  
 start(Reg, Name) ->
@@ -9,6 +9,10 @@ stop(Node) ->
 	Node ! stop,
 	unregister(Node).
  
+status(Node) ->
+	Node ! status.
+
+
 init(Name) ->
 	Intf = intf:new(),
 	Map = map:new(),
